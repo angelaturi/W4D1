@@ -8,6 +8,7 @@ class Knightpathfinder
 
     def initialize(position)
         @position = position
+        @considered_positions = [position]
     end 
 
     def self.valid_moves(position)
@@ -23,6 +24,23 @@ class Knightpathfinder
         valid_pos
     end 
     
+    def new_moves_positions(pos)
+        # @considered_positions.each do |cpos|
+        #     if cpos != pos
+
+        #     end
+        # end
+
+        # v1
+
+        consider_pos = DIRS.select { |pos| KnightPathFinder.valid_moves(pos)}
+
+        # v2
+
+        # KnightPathFinder.valid_moves(pos).reject { |new_pos| considered_positions.include?(new_pos) }
+        #     .each { |new_pos| considered_positions << new_pos }
+    end
+
 end 
 
 # kpf = Knightpathfinder.new 
