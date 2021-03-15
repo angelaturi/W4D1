@@ -19,12 +19,16 @@ class PolyTreeNode
         else 
             @parent.children.delete(self)
             @parent = new_node
-            @parent.children << self 
+            if !@parent.children.include?(self)
+                 @parent.children << self 
+            end 
         end 
     end 
 
     def add_child(child_node)
-        child_node.parent = self 
+        if !@children.include?(child_node)
+            child_node.parent = self 
+        end 
     end 
 
     def remove_child(child_node)
