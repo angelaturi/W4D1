@@ -72,12 +72,30 @@ class KnightPathFinder
         root_node
     end 
 
+    def find_path(end_pos)
+        trace_path_back(root_node.dfs(end_pos))
+    end 
+
+    def trace_path_back(end_node)
+        new_array = []
+        current = end_node
+        until current.nil? 
+            new_array.unshift(current.value)
+            current = current.parent
+        end 
+        new_array 
+    end 
+
 end 
 
-kpf = KnightPathFinder.new([0,0])
+kpf = KnightPathFinder.new([0, 0])
+p kpf.find_path([7, 6]) # => [[0, 0], [1, 2], [2, 4], [3, 6], [5, 5], [7, 6]]
+p kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
+
+# kpf = KnightPathFinder.new([0,0])
 # p kpf.valid_moves
 # kpf.root_node
-kpf.new_moves_positions([0,0])
+# kpf.new_moves_positions([0,0])
 # kpf.find_path([2, 1])
 
 #   knight = KnightPathFinder.new([0,0])
